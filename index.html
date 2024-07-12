@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 10px;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        .menu-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #555;
+            padding: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px; /* Fixed height for uniformity */
+        }
+        .menu-item img {
+            width: 100%;
+            height: 60%; /* Adjusted height for images */
+            object-fit: cover; /* Maintain aspect ratio */
+            transition: transform 0.3s ease;
+        }
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+        .menu-item p {
+            margin: 10px 0;
+            font-size: 16px; /* Adjusted font size */
+        }
+        .menu-item button {
+            background-color: rgb(71, 199, 130);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 80%; /* Adjusted width */
+            z-index: 1; /* Ensure button stays above description */
+            position: relative; /* Ensure button stays above description */
+        }
+        .menu-item:hover button {
+            transform: translateY(0);
+        }
+        .description {
+            position: absolute;
+            top: -100%; /* Initial position off-screen */
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            transition: top 0.3s ease; /* Transition for top position */
+            pointer-events: none;
+            opacity: 0; /* Initially hidden */
+            text-align: center; /* Center-align text */
+        }
+        .menu-item:hover .description {
+            top: 0; /* Show description on hover */
+            opacity: 1; /* Fade in */
+        }
+        .input-container {
+            text-align: center;
+            margin-top: 20px;
+            position: fixed; /* Fixed positioning */
+            bottom: 20px; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1001; /* Higher than payment form */
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            display: block; /* Initially displayed */
+        }
+        .input-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #fff;
+        }
+        .input-container .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-container input {
+            width: 100%; /* Full width for input */
+            max-width: 300px; /* Adjusted max-width */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333; /* Text color */
+            margin-right: 10px; /* Space for the button */
+        }
+        .input-container button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(71, 199, 130);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .payment-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #555;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+        .payment-form table {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+        }
+        .payment-form th, .payment-form td {
+            padding: 10px;
+            text-align: center;
+        }
+        .payment-form .back-button {
+            background-color: rgb(71, 199, 130);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%; /* Full width */
+        }
+        .payment-form button {
+            background-color: rgb(71, 199, 130);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .payment-form img {
+            width: 40px; /* Adjusted size */
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-item">
+            <img src="E:\checker\foto\how to cheat an exchanger.png" alt="how to cheat an exchanger">
+            <p>how to cheat an exchanger - $799</p>
+            <button onclick="showPaymentForm()">ADD</button>
+            <div class="description">Scheme of how to cancel a BTC transaction during an exchange and receive money in two wallets.</div>
+        </div>
+        <div class="menu-item">
+            <img src="E:\checker\foto\BTC.png" alt="BTC">
+            <p>BTC - $20</p>
+            <button onclick="showPaymentForm()">ADD</button>
+            <div class="description">BTC Wallet Checker: Earn up to $5000-20000 per day!
+
+                Our BTC wallet checker automatically finds forgotten wallets using seed phrases, allowing you to earn an average of $5,000 to $7,000 per day. Easy to use and provides high profitability. Join our successful community of cryptocurrency investors!</div>
+        </div>
+        <div class="menu-item">
+            <img src="E:\checker\foto\ddos attack.png" alt="ddos attack">
+            <p>ddos attack - $200</p>
+            <button onclick="showPaymentForm()">ADD</button>
+            <div class="description">A program that mimics a BTC blockchain robot, intercepting coins as they enter the BTC network and sending them to your wallet.</div>
+        </div>
+        <div class="menu-item">
+            <img src="E:\checker\foto\ETH.png" alt="ETH">
+            <p>ETH - $20</p>
+            <button onclick="showPaymentForm()">ADD</button>
+            <div class="description">ETH Wallet Checker: Earn up to $5000-7000 per day!
+
+                Our ETH wallet checker automatically finds forgotten wallets using private keys, allowing you to earn an average of $5,000 to $7,000 per day. Easy to use and provides high profitability. Join our successful cryptocurrency investing community!</div>
+        </div>
+    </div>
+    <div class="input-container" id="input-container">
+        <label for="money-reason">Why do you need money?</label>
+        <div class="input-wrapper">
+            <input type="text" id="money-reason" name="money-reason">
+            <button onclick="handleInput()">Send</button>
+        </div>
+    </div>
+    <div class="payment-form" id="payment-form">
+        <table>
+            <tr>
+                <th colspan="2">
+                    <img src="C:\Users\vlady\Desktop\site\foto\pngwing.com.png" alt="Visa">
+                    <img src="C:\Users\vlady\Desktop\site\foto\pngwing.com (2).png" alt="Mastercard">
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" id="card-number" name="card-number" placeholder="Enter card number"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="cvv" name="cvv" placeholder="Enter CVV"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Pay</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="back-button" onclick="goBack()">Back</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function showPaymentForm() {
+            document.querySelector('.payment-form').style.display = 'block';
+            document.querySelector('.menu').style.display = 'none'; // Hide menu when payment form shows
+            document.querySelector('#input-container').style.display = 'none'; // Hide input container
+        }
+
+        function goBack() {
+            document.querySelector('.payment-form').style.display = 'none';
+            document.querySelector('.menu').style.display = 'grid'; // Show menu when going back
+            document.querySelector('#input-container').style.display = 'block'; // Show input container
+        }
+
+        function handleInput() {
+            const inputContainer = document.getElementById('input-container');
+            const inputField = document.getElementById('money-reason');
+            if (inputField.value.trim() !== '') {
+                inputContainer.style.animation = 'fadeOutUp 0.5s forwards';
+                setTimeout(() => {
+                    inputContainer.style.display = 'none';
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
